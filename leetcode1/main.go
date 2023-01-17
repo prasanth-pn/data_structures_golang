@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	data := []int{ 10, 6, 2, 3}
-	target := 5
+	data := []int{ 10, 6, 4, 3}
+	target := 10
 
 	//fmt.Println(twosum(data, target))
 	fmt.Println("--------------------")
