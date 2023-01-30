@@ -14,10 +14,24 @@ type single struct {
 }
 
 func main() {
-	list := single{}
+	list := &single{}
+	list1 := &single{}
 
+	data1 := []int{2, 4, 6, 7, 9}
 	data := []int{12, 13, 14, 15, 16}
 	list.Addnode(data)
+
+	list1.Addnode(data1)
+//sum:=mergeTwoLists(list,list1)
+	list1.display()
+	// list.delete(12)
+	// list.display()
+
+}
+//  func mergeTwoLists(list *node ,list1 *node)*node{
+
+//  }
+
 
 	//list.delete(13)
 
@@ -52,10 +66,14 @@ func (c *single) insert(data int, search int) {
 	fmt.Println("the number is not available")
 }
 //---------------------------delete the node 
+
 func (list *single) delete(data int) {
 	temp := list.head
 	if temp.data == data {
 		list.head = temp.next
+
+		fmt.Println("\n\n ")
+
 		return
 	} else {
 		temp = list.head
@@ -72,6 +90,7 @@ func (list *single) delete(data int) {
 			}
 			temp = temp.next
 		}
+
 	}
 
 }
@@ -92,17 +111,16 @@ func (list *single) Addnode(data []int) {
 		list.tail = newnode
 
 	}
-	fmt.Println("\n\n\n\n ")
+	fmt.Println("\n ")
 
 }
 //-------------------------------------display the values
 func (list *single) display() {
 	temp := list.head
-	if list.head == nil {
-		fmt.Println("list is empty")
+	if temp==nil{
+		fmt.Println("the list is empty ")
+		return 
 	}
-	temp = list.head
-
 	for temp != nil {
 		fmt.Println(temp.data)
 		temp = temp.next
