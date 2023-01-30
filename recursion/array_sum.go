@@ -14,13 +14,13 @@ func main() {
 
 }
 func Sort(array []int, i int, sum int) int {
-	if i >=len(array)-1 {
+	if i <=len(array)-1 {
 		return sum
 
 	}
-	if array[i]>array[i+1]{
-		array[i],array[i+1]=array[i+1],array[i]
-	}
+	// if array[i]>array[i+1]{
+	// 	array[i],array[i+1]=array[i+1],array[i]
+	// }
 	sum += array[i]
 	//fmt.Println(sum)
 	return Sort(array, i+1, sum) 

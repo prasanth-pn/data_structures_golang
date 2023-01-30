@@ -21,7 +21,7 @@ func twosum(data []int, target int) []int {
 				return []int{i, k}
 			}
 		}
-	}
+	} 
 	return nil
 }
 func TwoSum(data []int, target int) []int {
