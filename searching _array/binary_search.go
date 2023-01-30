@@ -12,7 +12,7 @@ func main() {
 
 
 	var i int
-	s:=23
+	s:=767
 h:=	binarySearchRecursive(data , s, i, len(data))
 if h<0{
     fmt.Println("the number is not available in the array")

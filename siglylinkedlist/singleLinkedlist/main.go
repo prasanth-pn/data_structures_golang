@@ -88,9 +88,9 @@ func main() {
 	fmt.Println("the sorted linked list")
 	//list.SortAscend()
 	list.Display()
-
+fmt.Println("-------------------------------duplicate")
 	list.DuplicateDelete()
-	list.reverseList()
+	//list.reverseList()
 	list.Display()
 	//list.Sum()
 }
