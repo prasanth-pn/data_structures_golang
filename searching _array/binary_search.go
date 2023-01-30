@@ -13,7 +13,7 @@ func main() {
 
 	var i int
 	s:=767
-h:=	binarySearchRecursive(data , s, i, len(data))
+h:=	binarySearchRecursive(data , s, i, len(data)-1)
 if h<0{
     fmt.Println("the number is not available in the array")
 }else{
@@ -27,14 +27,14 @@ func binarySearchRecursive(arr []int, x int, low int, high int) int {
     if low > high {
         return -1
     }
-    mid := (low + high) / 2
+    mid :=(low + high) / 2
     if arr[mid] == x {
 		//fmt.Println("the number is present in the position ",mid)
         return mid
     } else if arr[mid] < x {
-        return binarySearchRecursive(arr, x, mid+1, high)
+        return binarySearchRecursive(arr, x, mid, high)
     } else {
-        return binarySearchRecursive(arr, x, low, mid-1)
+        return binarySearchRecursive(arr, x, low, mid)
     }
 }
 
