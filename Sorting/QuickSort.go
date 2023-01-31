@@ -13,9 +13,7 @@ func main() {
 
 func QuickSort(a []int) []int {//17,3,7,5
 	var n = len(a) - 1
-	fmt.Println(n, "length of n")
 	if n < 1 {
-		fmt.Println(a, "n<1")
 		return a
 	}
 
@@ -32,9 +30,7 @@ func QuickSort(a []int) []int {//17,3,7,5
 	}
 
 	a[i], a[n] = a[n], a[i]
-	fmt.Println(a[:i], "first iterative")
 	QuickSort(a[:i])	
-	fmt.Println(a[i+1:], "second iterative")
 	QuickSort(a[i+1:])
 	return a
 
