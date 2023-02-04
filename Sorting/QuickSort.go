@@ -31,7 +31,7 @@ func QuickSort(a []int) []int {//17,3,7,5
 
 	a[i], a[n] = a[n], a[i]
 	QuickSort(a[:i])	
-	QuickSort(a[i+1:])
+	QuickSort(a[i:])
 	return a
 
 }

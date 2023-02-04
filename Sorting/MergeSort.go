@@ -4,6 +4,8 @@ import "fmt"
 
 func main() {
 	array := []int{23, 12, 56, 45, 22, 90, 11, 34, 14}
+//	mid:=len(array)/2
+
 	array = MergeSort(array)
 	fmt.Println(array)
 }
@@ -13,15 +15,15 @@ func MergeSort(a []int) []int {
 		return a
 	}
 	mid := len(a) / 2
+
 	left := MergeSort(a[:mid])
 	right := MergeSort(a[mid:])
-	fmt.Println("hhhhhhhhhhhhhhhhhhhh")
 	return Merge(left, right)
 }
 func Merge(left, right []int) []int {
+//	fmt.Println(len(left),left," ",len(right)," ",right)
 	result := make([]int, 0, len(left)+len(right))
 	i, j := 0, 0
-	fmt.Println("jjjjjjjjjjjjjjjjj", left, right)
 
 	for i < len(left) && j < len(right) {
 		if left[i] < right[j] {
@@ -32,11 +34,35 @@ func Merge(left, right []int) []int {
 			j++
 		}
 	}
-	fmt.Println("kkkkkkkkkkkkkkkkkkkkkkk")
 	result = append(result, left[i:]...)
 	result = append(result, right[j:]...)
 	return result
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // func MergeSort(array[]int)[]int{
 // 	if len(array)<=1{

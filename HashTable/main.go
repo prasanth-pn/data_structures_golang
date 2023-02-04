@@ -55,17 +55,17 @@ func hash(key string) int {
 }
 func insert(key string, value string) {
 	h := hash(key)
-	fmt.Println(value, h)
+	//fmt.Println(value, h)
 	newnode := new(node)
 	newnode.key = key
 	newnode.value = value
 	newnode.next = table[h]
-	table[h] = newnode
+	table[h] = newnode 
 	//fmt.Println(table[h])
 	//fmt.Println(newnode.key,newnode.value)
 }
 func get(key string) (string, bool) {
-	fmt.Println(key,"search")
+	//fmt.Println(key,"search")
 	h := hash(key)
 
 	for n := table[h]; n != nil; n = n.next {
