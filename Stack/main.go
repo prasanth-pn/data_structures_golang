@@ -9,8 +9,8 @@ var top int = -1
 
 func main() {
 	var n int
-	for n < 7 {
-		fmt.Println(" \n enter the  option to use the operation \n 1 for push \n 2 for pop \n 3 for peek .\n 4 for display\n 7 for exit \n -----------------------------\n ")
+	for n < 8 {
+		fmt.Println(" \n enter the  option to use the operation \n 1 for push \n 2 for pop \n 3 for peek .\n 4 for display\n 5 for udo \n 6 for Redo \n 7 for exit \n -----------------------------\n ")
 		fmt.Scan(&n)
 		switch n {
 		case 1:
@@ -21,6 +21,10 @@ func main() {
 			Peek()
 		case 4:
 			Display()
+		case 5:
+			Undo()
+		case 6:
+			Redo()
 		default:
 			fmt.Println("this option is not available ")
 
@@ -28,6 +32,14 @@ func main() {
 	}
 	fmt.Println(" program exited successfully")
 
+}
+func Undo(){
+	top--
+	Peek()
+}
+func Redo(){
+	top++
+	Peek()
 }
 func Push() {
 
