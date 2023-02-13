@@ -98,7 +98,6 @@ func (h *MaxHeap) rootDeleteHelper(position int) {
 	w := h.maxValue(position)
 	if h.arr[position] < h.arr[w] {
 		swap(h.arr, position, w)
-		fmt.Println(h.maxValue(position), position, w, "mac positinh")
 		h.rootDeleteHelper(w)
 	}
 
@@ -126,9 +125,7 @@ func MaxHeapify(heap []int, i int) {
 	}
 	fmt.Println(large)
 	if large != i {
-		fmt.Println(heap, large, i)
 		swap(heap, large, i)
-		fmt.Println(heap)
 		MaxHeapify(heap, large)
 	}
 

@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type node struct {
 	data        int
@@ -11,11 +14,12 @@ type bst struct {
 }
 
 func main() {
+	var visited = make(map[int]bool)
 	var n int
-	data := []int{25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90}
+	data := []int{25, 10, 4, 22, 22, 18, 24, 50, 25, 31, 44, 70, 66, 90}
 	list := bst{}
-	for n < 8 {
-		fmt.Println("\nenter the option to do the tree operation\n 1.for insert \n 2.for inorder\n.3 for preorder \n 4.postorder \n 6 delete \n--------------------------------- ")
+	for n < 9 {
+		fmt.Println("\nenter the option to do the tree operation\n 1.for insert \n 2.for inorder\n.3 for preorder \n 4.postorder \n 5 delete \n 6 for delete duplicates\n 7 for closest value \n--------------------------------- ")
 		fmt.Scan(&n)
 		switch n {
 		case 1:
@@ -39,6 +43,18 @@ func main() {
 			v := 0
 			fmt.Scan(&v)
 			deleteNode(list.root, v)
+		case 6:
+			list.deleteDuplicate(list.root, visited)
+		case 7:
+			fmt.Println("Enter the number to find the closest value")
+
+			key := 26
+			diff := 0
+			fmt.Println(&diff)
+			val := 0
+			fmt.Scan(&key)
+			closestValue(list.root, key, &diff, &val)
+			fmt.Println(val,diff)
 		}
 	}
 	//list.insert()
@@ -64,7 +80,7 @@ func (list *bst) insert(value int) {
 					temp = temp.left
 				}
 			} else {
-				if value > temp.data {
+				if value >= temp.data {
 					if temp.right == nil {
 						temp.right = newnode
 						break
@@ -119,13 +135,15 @@ func deleteNode(root *node, key int) *node {
 		if root.left == nil {
 			fmt.Println("left")
 			return root.right
-		} else if root.right == nil {
+		}
+		if root.right == nil {
 			return root.left
 		}
+
 		minNode := findMinNode(root.right)
 		root.data = minNode.data
 		root.right = deleteNode(root.right, minNode.data)
-		fmt.Println(root.right,"end")
+
 	}
 	return root
 }
@@ -135,4 +153,37 @@ func findMinNode(node *node) *node {
 		node = node.left
 	}
 	return node
+}
+func (list *bst) deleteDuplicate(root *node, visited map[int]bool) {
+	if root == nil {
+		return
+	}
+	list.deleteDuplicate(root.left, visited)
+	if !visited[root.data] {
+		visited[root.data] = true
+	} else {
+		list.delete(root.data)
+	}
+	list.deleteDuplicate(root.right, visited)
+
+}
+func (tree *bst) delete(key int) {
+	deleteNode(tree.root, key)
+
+}
+func closestValue(root *node, key int, dif, val *int) {
+	if root == nil {
+		return 
+
+	}
+	//*dif=7999999
+
+	
+	closestValue(root.left, key, dif, val)
+	if *dif > root.data-key {
+		*dif = int(math.Abs(float64(root.data - key)))
+		*val = root.data
+	}
+	closestValue(root.right, key, dif, val)
+
 }

@@ -93,7 +93,7 @@ func (g *Graph) DFS(start int) []int {
 	var DFSUTIL func(vertex int)
 	DFSUTIL = func(vertex int) {
 
-		visited[vertex] = true``
+		visited[vertex] = true
 		for _, v := range g.table[vertex] {
 
 			if !visited[v] {
